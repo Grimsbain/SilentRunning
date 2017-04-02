@@ -1,7 +1,9 @@
+-- Settings
 if SilentRunningDB == nil then
 	SilentRunningDB = { ["Switch"] = true, }
 end
 
+-- Toggle Music on and off.
 local function ToggleMusic(toggle)
 	if toggle then
 		SetCVar("Sound_EnableMusic", 1);
@@ -10,9 +12,12 @@ local function ToggleMusic(toggle)
 	end
 end
 
+-- Either silents or restores sounds depending on if you are in stealth.
 local function onEvent(self, event)
 		if not SilentRunningDB.Switch then return end
+		-- Checks for Stealth
 		stealthed = IsStealthed();
+
 		if (stealthed) then
 			ToggleMusic(false)
 		else
@@ -20,6 +25,7 @@ local function onEvent(self, event)
 		end
 end
 
+-- Gets the addon going on startup and rechecks on stealth status change.
 local addon = CreateFrame('Frame')
 addon:SetScript('OnEvent', onEvent)
 addon:RegisterEvent('ADDON_LOADED')
