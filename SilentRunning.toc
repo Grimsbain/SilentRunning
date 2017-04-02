@@ -1,0 +1,9 @@
+## Interface: 70200
+## Version: 2.3
+## Author: Grimsbain
+## Title: Silent Running
+## Notes: Silence background music during stealth.
+## SavedVariables: SilentRunningDB
+
+SilentRunning.lua
+Options.lua
