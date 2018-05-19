@@ -1,10 +1,7 @@
-local ADDON, ns = ...
-
-local checkboxOn = PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_ON
-local checkboxOff = PlaySoundKitID and "igMainMenuOptionCheckBoxOff" or SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_OFF
+local addon, ns = ...
 
 local Options = CreateFrame("Frame", "SilentOptions", InterfaceOptionsFramePanelContainer)
-Options.name = GetAddOnMetadata(ADDON, "Title")
+Options.name = GetAddOnMetadata(addon, "Title")
 InterfaceOptions_AddCategory(Options)
 
 Options:Hide()
@@ -19,15 +16,14 @@ Options:SetScript("OnShow", function()
 	SubText:SetHeight(32)
 	SubText:SetJustifyH("LEFT")
 	SubText:SetJustifyV("TOP")
-	SubText:SetText(GetAddOnMetadata(ADDON, "Notes"))
+	SubText:SetText(GetAddOnMetadata(addon, "Notes"))
 
 	local Switch = CreateFrame("CheckButton", "$parentSwitch", Options, "InterfaceOptionsCheckButtonTemplate")
 	Switch:SetPoint("TOPLEFT", SubText, "BOTTOMLEFT", 0, -12)
-	Switch.Text:SetText("Enable")
-	Switch.tooltipText = "Switch addon on or off."
-	Switch:SetScript("OnClick", function(this)
-		local checked = not not this:GetChecked()
-		PlaySound(checked and checkboxOn or checkboxOff)
+	Switch.Text:SetText(ENABLE)
+	Switch:SetScript("OnClick", function(self)
+		local checked = not not self:GetChecked()
+		PlaySound(SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_ON)
 		SilentRunningDB.Switch = checked
 	end)
 

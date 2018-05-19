@@ -1,0 +1,10 @@
+<Ui>
+    <Script file="SilentRunning.lua" />
+	<Script file="Options.lua" />
+    <Frame name="SilentRunning">
+        <Scripts>
+			<OnLoad function="SilentRunning_OnLoad" />
+			<OnEvent function="SilentRunning_OnEvent" />
+        </Scripts>
+    </Frame>
+</Ui>
