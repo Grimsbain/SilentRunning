@@ -1,5 +1,5 @@
-## Interface: 70300
-## Version: 2.7
+## Interface: 80000
+## Version: 2.8
 ## Author: Grimsbain
 ## Title: Silent Running
 ## Notes: Silence background music during stealth.
